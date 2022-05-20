@@ -1,0 +1,57 @@
+/*stackoverflow inverted orange = hsl(207, 90, 50)*/
+.App {
+  color: var(--grey-warm);
+  font-size: 13px;
+  --black: #000000;
+  --grey-middle: #808080;
+  --grey-very-light: #cccccc;
+  --grey-warm: #3b4045;
+  --orange-dark: #f56a00;
+  --orange-light: #ff8b33;
+}
+
+.Link {
+  color: var(--orange-light);
+  text-decoration: none;
+}
+
+.Link:hover {
+  color: var(--orange-dark);
+}
+
+.PostSummary {
+  border-bottom: 1px solid var(--grey-very-light);
+  display: flex;
+  padding: 16px;
+}
+
+.PostSummary-Stats {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 5px;
+  margin-right: 16px;
+}
+
+.PostSummary-Stats-Item {
+  color: var(--grey-middle);
+}
+
+.PostSummary-Stats-Item--emphasized {
+  color: var(--black);
+}
+
+.PostSummary-Content-Title {
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.PostSummary-Content-Excerpt {
+  display: -webkit-box;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
