@@ -18,10 +18,7 @@ let webApp =
   choose [ subRoute
              "/api"
              (choose [ GET
-                       >=> choose [ route "/hello" >=> handleGetHello ]
-                       GET
-                       >=> choose [ route "/posts/summaries"
-                                    >=> handleGetPostSummaries ] ])
+                       >=> choose [ route "/post-summaries" >=> handleGetPostSummaries ] ])
            setStatusCode 404 >=> text "Not Found" ]
 
 // ---------------------------------
@@ -41,7 +38,7 @@ let errorHandler (ex: Exception) (logger: ILogger) =
 
 let configureCors (builder: CorsPolicyBuilder) =
   builder
-    .WithOrigins("http://localhost:5000", "https://localhost:5001")
+    .WithOrigins("http://localhost:5000", "https://localhost:5001", "http://localhost:3000")
     .AllowAnyMethod()
     .AllowAnyHeader()
   |> ignore
