@@ -1,5 +1,5 @@
 .PostSummary {
-  border-bottom: 1px solid var(--grey-very-light);
+  border-bottom: 1px solid var(--color-cambridge-blue);
   display: flex;
   padding: 16px;
 }
@@ -14,11 +14,11 @@
 }
 
 .PostSummary-Stats-Item {
-  color: var(--grey-middle);
+  color: var(--color-grey);
 }
 
 .PostSummary-Stats-Item--emphasized {
-  color: var(--black);
+  color: var(--color-black);
 }
 
 .PostSummary-Content-Title {

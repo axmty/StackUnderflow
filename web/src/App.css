@@ -1,19 +1,22 @@
 .App {
-  color: var(--grey-warm);
+  color: var(--color-dark-grey);
   font-size: 13px;
-  --black: #000000;
-  --grey-middle: #808080;
-  --grey-very-light: #cccccc;
-  --grey-warm: #3b4045;
-  --orange-dark: #f56a00;
-  --orange-light: #ff8b33;
+  --color-black: #000000;
+  --color-grey: #888888;
+  --color-dark-grey: #444444;
+  --color-light-grey: #cccccc;
+  --color-maximum-blue-green: #75b9be;
+  --color-opal: #a8ccc9;
+  --color-cambridge-blue: #b3d6c6;
+  --color-pale-spring-bud: #dceab2;
+  --color-june-bud: #c7d66d;
 }
 
 .Link {
-  color: var(--orange-light);
+  color: var(--color-opal);
   text-decoration: none;
 }
 
 .Link:hover {
-  color: var(--orange-dark);
+  color: var(--color-maximum-blue-green);
 }
