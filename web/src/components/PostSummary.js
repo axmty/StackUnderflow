@@ -2,7 +2,7 @@ import React from "react";
 
 import "./PostSummary.css";
 
-const PostSummary = (props) => (
+export default (props) => (
   <div className="PostSummary">
     <div className="PostSummary-Stats">
       <div className="PostSummary-Stats-Item PostSummary-Stats-Item--emphasized">
@@ -21,5 +21,3 @@ const PostSummary = (props) => (
     </div>
   </div>
 );
-
-export default PostSummary;

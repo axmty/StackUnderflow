@@ -1,48 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import PostSummary from "./PostSummary";
 
-class PostSummaryList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      items: [],
-    };
-  }
+export default () => {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
 
-  componentDidMount() {
+  useEffect(() => {
     fetch("https://localhost:5001/api/post-summaries")
-      .then((res) => {
-        return res.json();
-      })
+      .then((res) => res.json())
       .then(
         (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result,
-          });
+          setIsLoaded(true);
+          setItems(result);
         },
         (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          });
+          setIsLoaded(true);
+          setError(error);
         }
       );
-  }
+  }, []);
 
-  render() {
-    const { error, isLoaded, items } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
-      return items.map((item) => <PostSummary key={item.postId} {...item} />);
-    }
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isLoaded) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <div className="PostSummaryList">
+        {items.map((item) => (
+          <PostSummary key={item.postId} {...item} />
+        ))}
+      </div>
+    );
   }
-}
-
-export default PostSummaryList;
+};
