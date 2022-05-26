@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import PostSummary from "./PostSummary";
 
-export default () => {
+const PostSummaryList = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
@@ -36,3 +36,5 @@ export default () => {
     );
   }
 };
+
+export default PostSummaryList;

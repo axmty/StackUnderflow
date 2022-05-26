@@ -11,7 +11,7 @@ module HttpHandlers =
         let response: PostSummaryDto list =
           [ for i in 1..5 ->
               { VoteCount = 3
-                AnswerCount = 3
+                AnswerCount = i - 1
                 ViewCount = 2
                 PostId = i
                 Title = "how do i get error documentation hint in xcode"
