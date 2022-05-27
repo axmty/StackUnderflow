@@ -19,7 +19,6 @@ const PagerItem = ({ text, isCurrent, isClear, setPage, toPage }) => {
       className={className}
       disabled={disabled}
       onClick={() => {
-        console.log("click: " + toPage);
         setPage(toPage);
       }}
     >

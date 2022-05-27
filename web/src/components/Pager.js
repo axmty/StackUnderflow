@@ -13,7 +13,10 @@ const Pager = ({ page, pageSize, total, setPage }) => {
 
   if (firstSurroundingPage > 1) {
     items.push(<PagerItem text="1" key={items.length} setPage={setPage} toPage={1} />);
-    items.push(<PagerItem key={items.length} isClear />);
+
+    if (firstSurroundingPage > 2) {
+      items.push(<PagerItem key={items.length} isClear />);
+    }
   }
 
   for (let currPage = firstSurroundingPage; currPage <= lastSurroundingPage; currPage++) {
@@ -29,7 +32,10 @@ const Pager = ({ page, pageSize, total, setPage }) => {
   }
 
   if (lastSurroundingPage < pageCount) {
-    items.push(<PagerItem key={items.length} isClear />);
+    if (lastSurroundingPage < pageCount - 1) {
+      items.push(<PagerItem key={items.length} isClear />);
+    }
+
     items.push(
       <PagerItem text={pageCount} key={items.length} setPage={setPage} toPage={pageCount} />
     );
