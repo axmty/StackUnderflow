@@ -14,14 +14,14 @@ const PagerItem = ({ text, isCurrent, isClear, setPage, toPage }) => {
     disabled = true;
   }
 
-  return (
-    <button
-      className={className}
-      disabled={disabled}
-      onClick={() => {
+  const handleClick = isClear
+    ? undefined
+    : () => {
         setPage(toPage);
-      }}
-    >
+      };
+
+  return (
+    <button className={className} disabled={disabled} onClick={handleClick}>
       {text}
     </button>
   );

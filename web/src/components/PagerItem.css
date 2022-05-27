@@ -18,6 +18,12 @@
   cursor: initial;
 }
 
+.Pager-Item--clear:hover {
+  background-color: transparent;
+  border-width: 0;
+  cursor: initial;
+}
+
 .Pager-Item--current {
   background-color: var(--color-maximum-blue-green);
   color: white;
