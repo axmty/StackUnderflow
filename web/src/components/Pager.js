@@ -1,3 +1,5 @@
+import "./Pager.css";
+import "./Pagination.css";
 import PaginationItem from "./PaginationItem";
 
 const Pager = ({ page, pageCount, setPage }) => {
@@ -59,7 +61,7 @@ const Pager = ({ page, pageCount, setPage }) => {
     );
   }
 
-  return <div className="Pager">{items}</div>;
+  return <div className="Pager Pagination">{items}</div>;
 };
 
 export default Pager;
