@@ -1,48 +1,63 @@
-import PagerItem from "./PagerItem";
+import PaginationItem from "./PaginationItem";
 
 const Pager = ({ page, pageSize, total, setPage }) => {
   const pageCount = Math.ceil(total / pageSize);
   const items = [];
 
+  const handleClickToPage = (toPage) => {
+    return () => setPage(toPage);
+  };
+
   if (page > 1) {
-    items.push(<PagerItem text="Prev" key={items.length} setPage={setPage} toPage={page - 1} />);
+    items.push(
+      <PaginationItem text="Prev" key={items.length} handleClick={handleClickToPage(page - 1)} />
+    );
   }
 
   const firstSurroundingPage = Math.max(1, page - 2);
   const lastSurroundingPage = Math.min(pageCount, page + 2);
 
   if (firstSurroundingPage > 1) {
-    items.push(<PagerItem text="1" key={items.length} setPage={setPage} toPage={1} />);
-
-    if (firstSurroundingPage > 2) {
-      items.push(<PagerItem key={items.length} isClear />);
-    }
+    items.push(<PaginationItem text="1" key={items.length} handleClick={handleClickToPage(1)} />);
   }
 
-  for (let currPage = firstSurroundingPage; currPage <= lastSurroundingPage; currPage++) {
+  if (firstSurroundingPage > 2) {
+    items.push(<PaginationItem text="..." key={items.length} isClear />);
+  }
+
+  for (
+    let currPageItem = firstSurroundingPage;
+    currPageItem <= lastSurroundingPage;
+    currPageItem++
+  ) {
     items.push(
-      <PagerItem
-        text={currPage}
+      <PaginationItem
+        text={currPageItem}
         key={items.length}
-        isCurrent={currPage === page}
-        setPage={setPage}
-        toPage={currPage}
+        isCurrent={currPageItem === page}
+        handleClick={handleClickToPage(currPageItem)}
       />
     );
   }
 
-  if (lastSurroundingPage < pageCount) {
-    if (lastSurroundingPage < pageCount - 1) {
-      items.push(<PagerItem key={items.length} isClear />);
-    }
+  if (lastSurroundingPage < pageCount - 1) {
+    items.push(<PaginationItem text="..." key={items.length} isClear />);
+  }
 
+  if (lastSurroundingPage < pageCount) {
     items.push(
-      <PagerItem text={pageCount} key={items.length} setPage={setPage} toPage={pageCount} />
+      <PaginationItem
+        text={pageCount}
+        key={items.length}
+        handleClick={handleClickToPage(pageCount)}
+      />
     );
   }
 
   if (page < pageCount) {
-    items.push(<PagerItem text="Next" key={items.length} setPage={setPage} toPage={page + 1} />);
+    items.push(
+      <PaginationItem text="Next" key={items.length} handleClick={handleClickToPage(page + 1)} />
+    );
   }
 
   return <div className="Pager">{items}</div>;

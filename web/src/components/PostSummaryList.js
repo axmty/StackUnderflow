@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 
+import PageSizer from "./PageSizer";
 import Pager from "./Pager";
 import PostSummary from "./PostSummary";
 import "./PostSummaryList.css";
+
+const pageSizeOptions = [15, 30, 50];
 
 const PostSummaryList = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(pageSizeOptions[0]);
 
   useEffect(() => {
-    fetch(`https://localhost:5001/api/post-summaries?page=${page}`)
+    fetch(`https://localhost:5001/api/post-summaries?page=${page}&page_size=${pageSize}`)
       .then((res) => res.json())
       .then(
         (result) => {
@@ -23,7 +27,7 @@ const PostSummaryList = () => {
           setError(error);
         }
       );
-  }, [page]);
+  }, [page, pageSize]);
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -38,8 +42,12 @@ const PostSummaryList = () => {
           ))}
         </div>
 
-        <Pager page={page} pageSize={15} total={1000} setPage={setPage} />
-        <div className="PageSizer"></div>
+        <Pager page={page} pageSize={pageSize} total={1000} setPage={setPage} />
+        <PageSizer
+          pageSize={pageSize}
+          pageSizeOptions={pageSizeOptions}
+          setPageSize={setPageSize}
+        />
       </div>
     );
   }

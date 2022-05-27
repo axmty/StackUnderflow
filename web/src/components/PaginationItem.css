@@ -1,4 +1,4 @@
-.Pager-Item {
+.PaginationItem {
   background-color: transparent;
   border: 1px solid var(--color-opal);
   border-radius: 3px;
@@ -9,27 +9,27 @@
   margin-right: 2px;
 }
 
-.Pager-Item:hover {
+.PaginationItem:hover {
   background-color: var(--color-opal);
 }
 
-.Pager-Item--clear {
+.PaginationItem--clear {
   border-width: 0;
   cursor: initial;
 }
 
-.Pager-Item--clear:hover {
+.PaginationItem--clear:hover {
   background-color: transparent;
   border-width: 0;
   cursor: initial;
 }
 
-.Pager-Item--current {
+.PaginationItem--current {
   background-color: var(--color-maximum-blue-green);
   color: white;
   cursor: initial;
 }
 
-.Pager-Item--current:hover {
+.PaginationItem--current:hover {
   background-color: var(--color-maximum-blue-green);
 }
