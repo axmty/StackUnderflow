@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import PostSummary from "./PostSummary";
+import "./PostSummaryList.css";
 
 const PostSummaryList = () => {
   const [error, setError] = useState(null);
@@ -28,10 +29,23 @@ const PostSummaryList = () => {
     return <div>Loading...</div>;
   } else {
     return (
-      <div className="PostSummaryList">
-        {items.map((item) => (
-          <PostSummary key={item.postId} {...item} />
-        ))}
+      <div className="Content">
+        <div className="PostSummaryList">
+          {items.map((item) => (
+            <PostSummary key={item.postId} {...item} />
+          ))}
+        </div>
+
+        <div className="Pager">
+          <button className="Pager-Item">Prev</button>
+          <button className="Pager-Item">1</button>
+          <button className="Pager-Item Pager-Item-Current">2</button>
+          <button className="Pager-Item">3</button>
+          <button className="Pager-Item Pager-Item-Clear">...</button>
+          <button className="Pager-Item">1000</button>
+          <button className="Pager-Item">Next</button>
+        </div>
+        <div className="PageSizer"></div>
       </div>
     );
   }

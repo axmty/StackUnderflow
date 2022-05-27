@@ -14,10 +14,10 @@
 }
 
 .Link {
-  color: var(--color-opal);
+  color: var(--color-maximum-blue-green);
   text-decoration: none;
 }
 
 .Link:hover {
-  color: var(--color-maximum-blue-green);
+  color: var(--color-opal);
 }

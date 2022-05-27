@@ -4,13 +4,20 @@
   padding: 16px;
 }
 
+.PostSummary:last-child {
+  border-bottom-width: 0;
+}
+
 .PostSummary-Stats {
   align-items: flex-end;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  flex-wrap: wrap;
   gap: 5px;
+  margin-bottom: 5px;
   margin-right: 16px;
+  width: 100px;
 }
 
 .PostSummary-Stats-Item {
@@ -40,4 +47,41 @@
   word-break: break-word;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+
+@media (max-width: 980px) {
+  .PostSummary {
+    flex-direction: column;
+  }
+
+  .PostSummary-Stats {
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+  }
+}
+
+.Pager-Item {
+  background-color: transparent;
+  border: 1px solid var(--color-opal);
+  border-radius: 3px;
+  color: var(--color-dark-grey);
+  cursor: pointer;
+  line-height: 24px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.Pager-Item-Clear {
+  border-width: 0;
+  cursor: initial;
+}
+
+.Pager-Item-Current {
+  background-color: var(--color-maximum-blue-green);
+  color: white;
+}
+
+.Content {
+  padding: 24px;
 }
