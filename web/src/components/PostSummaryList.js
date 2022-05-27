@@ -13,6 +13,12 @@ const PostSummaryList = () => {
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(pageSizeOptions[0]);
+  const [total, setTotal] = useState(0);
+
+  const pageCount = Math.ceil(total / pageSize);
+  if (pageCount > 0 && page > pageCount) {
+    setPage(pageCount);
+  }
 
   useEffect(() => {
     fetch(`https://localhost:5001/api/post-summaries?page=${page}&page_size=${pageSize}`)
@@ -21,10 +27,12 @@ const PostSummaryList = () => {
         (result) => {
           setIsLoaded(true);
           setItems(result);
+          setTotal(1000); //TODO
         },
         (error) => {
           setIsLoaded(true);
           setError(error);
+          setTotal(0);
         }
       );
   }, [page, pageSize]);
@@ -42,7 +50,7 @@ const PostSummaryList = () => {
           ))}
         </div>
 
-        <Pager page={page} pageSize={pageSize} total={1000} setPage={setPage} />
+        <Pager page={page} pageCount={pageCount} setPage={setPage} />
         <PageSizer
           pageSize={pageSize}
           pageSizeOptions={pageSizeOptions}

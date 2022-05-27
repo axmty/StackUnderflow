@@ -1,7 +1,6 @@
 import PaginationItem from "./PaginationItem";
 
-const Pager = ({ page, pageSize, total, setPage }) => {
-  const pageCount = Math.ceil(total / pageSize);
+const Pager = ({ page, pageCount, setPage }) => {
   const items = [];
 
   const handleClickToPage = (toPage) => {
