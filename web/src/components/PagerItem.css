@@ -1,0 +1,29 @@
+.Pager-Item {
+  background-color: transparent;
+  border: 1px solid var(--color-opal);
+  border-radius: 3px;
+  color: var(--color-dark-grey);
+  cursor: pointer;
+  line-height: 24px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.Pager-Item:hover {
+  background-color: var(--color-opal);
+}
+
+.Pager-Item--clear {
+  border-width: 0;
+  cursor: initial;
+}
+
+.Pager-Item--current {
+  background-color: var(--color-maximum-blue-green);
+  color: white;
+  cursor: initial;
+}
+
+.Pager-Item--current:hover {
+  background-color: var(--color-maximum-blue-green);
+}

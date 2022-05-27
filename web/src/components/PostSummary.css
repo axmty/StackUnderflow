@@ -60,28 +60,3 @@
     width: 100%;
   }
 }
-
-.Pager-Item {
-  background-color: transparent;
-  border: 1px solid var(--color-opal);
-  border-radius: 3px;
-  color: var(--color-dark-grey);
-  cursor: pointer;
-  line-height: 24px;
-  margin-left: 2px;
-  margin-right: 2px;
-}
-
-.Pager-Item-Clear {
-  border-width: 0;
-  cursor: initial;
-}
-
-.Pager-Item-Current {
-  background-color: var(--color-maximum-blue-green);
-  color: white;
-}
-
-.Content {
-  padding: 24px;
-}

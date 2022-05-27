@@ -40,7 +40,7 @@ module HttpHandlers =
         let response =
           items
           |> Seq.skip (pageSize * (page - 1))
-          |> Seq.take pageSize
+          |> Seq.truncate pageSize
 
         return! json response next ctx
       }

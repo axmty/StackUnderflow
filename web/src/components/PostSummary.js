@@ -1,5 +1,3 @@
-import React from "react";
-
 import "./PostSummary.css";
 
 const PostSummary = (props) => {

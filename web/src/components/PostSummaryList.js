@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
+import Pager from "./Pager";
 import PostSummary from "./PostSummary";
 import "./PostSummaryList.css";
 
@@ -7,9 +8,10 @@ const PostSummaryList = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    fetch("https://localhost:5001/api/post-summaries")
+    fetch(`https://localhost:5001/api/post-summaries?page=${page}`)
       .then((res) => res.json())
       .then(
         (result) => {
@@ -21,7 +23,7 @@ const PostSummaryList = () => {
           setError(error);
         }
       );
-  }, []);
+  }, [page]);
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -36,15 +38,7 @@ const PostSummaryList = () => {
           ))}
         </div>
 
-        <div className="Pager">
-          <button className="Pager-Item">Prev</button>
-          <button className="Pager-Item">1</button>
-          <button className="Pager-Item Pager-Item-Current">2</button>
-          <button className="Pager-Item">3</button>
-          <button className="Pager-Item Pager-Item-Clear">...</button>
-          <button className="Pager-Item">1000</button>
-          <button className="Pager-Item">Next</button>
-        </div>
+        <Pager page={page} pageSize={15} total={1000} setPage={setPage} />
         <div className="PageSizer"></div>
       </div>
     );
