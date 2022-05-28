@@ -1,4 +1,3 @@
-import "./PageSizer.css";
 import "./Pagination.css";
 import PaginationItem from "./PaginationItem";
 
@@ -15,7 +14,7 @@ const PageSizer = ({ pageSize, pageSizeOptions, setPageSize }) => {
   ));
 
   return (
-    <div className="PageSizer Pagination">
+    <div className="PaginationBlock PaginationBlock--right">
       {items}
       <PaginationItem key={pageSizeOptions.length} text="per page" isClear />
     </div>

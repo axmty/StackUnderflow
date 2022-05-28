@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
-import PageSizer from "./PageSizer";
-import Pager from "./Pager";
+import Pagination from "./Pagination";
 import PostSummary from "./PostSummary";
 import "./PostSummaryList.css";
 
@@ -50,8 +49,10 @@ const PostSummaryList = () => {
           ))}
         </div>
 
-        <Pager page={page} pageCount={pageCount} setPage={setPage} />
-        <PageSizer
+        <Pagination
+          page={page}
+          pageCount={pageCount}
+          setPage={setPage}
           pageSize={pageSize}
           pageSizeOptions={pageSizeOptions}
           setPageSize={setPageSize}
