@@ -1,11 +1,10 @@
-import "./Pagination.css";
 import PaginationItem from "./PaginationItem";
 
-const Pager = ({ page, pageCount, setPage }) => {
+const Pager = ({ page, pageCount, handlePageChange }) => {
   const items = [];
 
   const handleClickToPage = (toPage) => {
-    return () => setPage(toPage);
+    return () => handlePageChange(toPage);
   };
 
   if (page > 1) {
@@ -60,7 +59,7 @@ const Pager = ({ page, pageCount, setPage }) => {
     );
   }
 
-  return <div className="PaginationBlock">{items}</div>;
+  return <div className="Pagination-Block">{items}</div>;
 };
 
 export default Pager;

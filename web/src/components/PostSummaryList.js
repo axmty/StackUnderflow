@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import Pagination from "./Pagination";
+import Pagination from "./Pagination/Pagination";
 import PostSummary from "./PostSummary";
 import "./PostSummaryList.css";
 
@@ -52,10 +52,10 @@ const PostSummaryList = () => {
         <Pagination
           page={page}
           pageCount={pageCount}
-          setPage={setPage}
+          handlePageChange={setPage}
           pageSize={pageSize}
           pageSizeOptions={pageSizeOptions}
-          setPageSize={setPageSize}
+          handlePageSizeChange={setPageSize}
         />
       </div>
     );

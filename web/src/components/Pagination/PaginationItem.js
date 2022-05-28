@@ -1,15 +1,13 @@
-import "./PaginationItem.css";
-
 const PagerItem = ({ text, isCurrent, isClear, handleClick }) => {
-  let className = "PaginationItem";
+  let className = "Pagination-Block-Item";
   let disabled = false;
 
   if (isClear) {
-    className += " PaginationItem--clear";
+    className += " Pagination-Block-Item--clear";
   }
 
   if (isCurrent) {
-    className += " PaginationItem--current";
+    className += " Pagination-Block-Item--current";
     disabled = true;
   }
 
