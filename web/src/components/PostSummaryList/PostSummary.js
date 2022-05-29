@@ -4,18 +4,22 @@ const PostSummary = (props) => {
       ? "PostSummary-Stats-Item PostSummary-Stats-Item--hasAnswers"
       : "PostSummary-Stats-Item";
 
-  const answerCountItemLabel = props.answerCount === 1 ? "answer" : "answers";
+  const voteCountLabel = props.voteCount === 1 ? "vote" : "votes";
+  const answerCountLabel = props.answerCount === 1 ? "answer" : "answers";
+  const viewCountLabel = props.viewCount === 1 ? "view" : "views";
 
   return (
     <div className="PostSummary">
       <div className="PostSummary-Stats">
         <div className="PostSummary-Stats-Item PostSummary-Stats-Item--emphasized">
-          {props.voteCount} votes
+          {props.voteCount} {voteCountLabel}
         </div>
         <div className={answerCountItemClassName}>
-          {props.answerCount} {answerCountItemLabel}
+          {props.answerCount} {answerCountLabel}
         </div>
-        <div className="PostSummary-Stats-Item">{props.viewCount} views</div>
+        <div className="PostSummary-Stats-Item">
+          {props.viewCount} {viewCountLabel}
+        </div>
       </div>
       <div className="PostSummary-Content">
         <h3 className="PostSummary-Content-Title">
