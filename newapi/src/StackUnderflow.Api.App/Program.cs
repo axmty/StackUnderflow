@@ -20,19 +20,25 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+var tags = new[] { "html", "css", "java", "c#", "f#", "r", "c", "c++", "python" };
+
+var rand = new Random();
+
 var postSummaries = Enumerable
   .Range(1, 1000)
   .Select(
     i =>
-      new PostSummary(
+      new PostSummaryDto(
         i - 1,
         i - 1,
         i - 1,
         i,
         "how do i get error documentation hint in xcode",
-        "I'm watching a tutorial and a question mark shows up by the purple error message with a link straight to the docs that answers why. I'm losing what's left of my sanity trying to figure out how to turn ..."
+        "I'm watching a tutorial and a question mark shows up by the purple error message with a link straight to the docs that answers why. I'm losing what's left of my sanity trying to figure out how to turn ...",
+        tags.Skip((int)rand.NextInt64(0, 5)).Take((int)rand.NextInt64(1, 6)).ToArray()
       )
-  );
+  )
+  .ToArray();
 
 app.MapGet(
     "/api/post-summaries",
@@ -55,11 +61,12 @@ app.UseCors(options =>
 
 app.Run();
 
-record PostSummary(
+record PostSummaryDto(
   int VoteCount,
   int AnswerCount,
   int ViewCount,
   int PostId,
   string Title,
-  string Excerpt
+  string Excerpt,
+  IEnumerable<string> Tags
 );
