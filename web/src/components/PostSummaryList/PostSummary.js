@@ -1,5 +1,3 @@
-import "./PostSummary.css";
-
 const PostSummary = (props) => {
   const answerCountItemClassName =
     props.answerCount > 0

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import Pagination from "./Pagination/Pagination";
+import Pagination from "../Pagination/Pagination";
 import PostSummary from "./PostSummary";
 import "./PostSummaryList.css";
 
