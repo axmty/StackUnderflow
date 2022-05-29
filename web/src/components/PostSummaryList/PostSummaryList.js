@@ -20,7 +20,7 @@ const PostSummaryList = () => {
   }
 
   useEffect(() => {
-    fetch(`https://localhost:5001/api/post-summaries?page=${page}&page_size=${pageSize}`)
+    fetch(`https://localhost:7231/api/post-summaries?page=${page}&page_size=${pageSize}`)
       .then((res) => res.json())
       .then(
         (result) => {
