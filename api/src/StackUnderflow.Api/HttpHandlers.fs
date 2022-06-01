@@ -6,7 +6,17 @@ module HttpHandlers =
   open Microsoft.AspNetCore.Http
   open StackUnderflow.Api.Models
 
-  let items =
+  let tags =
+    [ [ "html"; "css" ]
+      [ "c++" ]
+      [ "r"; "data" ]
+      [ "java"; "spring"; "orm" ]
+      [ "c#"; "dotnet" ]
+      [ "f#" ] ]
+
+  let rand = Random()
+
+  let allItems =
     [ for i in 1..1000 ->
         { VoteCount = i - 1
           AnswerCount = i - 1
@@ -16,7 +26,9 @@ module HttpHandlers =
           Excerpt =
             "I'm watching a tutorial and a question mark shows up by the purple error "
             + "message with a link straight to the docs that answers why. I'm losing what's left "
-            + "of my sanity trying to figure out how to turn ..." } ]
+            + "of my sanity trying to figure out how to turn ..."
+          Tags = tags[rand.Next(tags.Length)] } ]
+
 
   let handleGetPostSummaries =
     fun (next: HttpFunc) (ctx: HttpContext) ->
@@ -36,11 +48,13 @@ module HttpHandlers =
           | true, pageSize when pageSize > 0 -> pageSize
           | _ -> 15
 
-      task {
-        let response =
-          items
-          |> Seq.skip (pageSize * (page - 1))
-          |> Seq.truncate pageSize
+      let items =
+        allItems
+        |> Seq.skip (pageSize * (page - 1))
+        |> Seq.truncate pageSize
 
-        return! json response next ctx
-      }
+      let response =
+        { Data = items
+          Total = Seq.length allItems }
+
+      task { return! json response next ctx }

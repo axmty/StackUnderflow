@@ -20,13 +20,13 @@ const PostSummaryList = () => {
   }
 
   useEffect(() => {
-    fetch(`https://localhost:7231/api/post-summaries?page=${page}&page_size=${pageSize}`)
+    fetch(`https://localhost:5001/api/post-summaries?page=${page}&page_size=${pageSize}`)
       .then((res) => res.json())
       .then(
         (result) => {
           setIsLoaded(true);
-          setItems(result);
-          setTotal(1000); //TODO
+          setItems(result.data);
+          setTotal(result.total);
         },
         (error) => {
           setIsLoaded(true);
