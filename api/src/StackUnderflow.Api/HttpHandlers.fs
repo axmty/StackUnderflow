@@ -17,18 +17,19 @@ module HttpHandlers =
   let rand = Random()
 
   let allItems =
-    [ for i in 1..1000 ->
-        { VoteCount = i - 1
-          AnswerCount = i - 1
-          ViewCount = i - 1
-          PostId = i
-          Title = "how do i get error documentation hint in xcode"
-          Excerpt =
-            "I'm watching a tutorial and a question mark shows up by the purple error "
-            + "message with a link straight to the docs that answers why. I'm losing what's left "
-            + "of my sanity trying to figure out how to turn ..."
-          Tags = tags[rand.Next(tags.Length)] } ]
-
+    new Collections.Generic.List<PostSummaryDto>(
+      [ for i in 1..3 ->
+          { VoteCount = i - 1
+            AnswerCount = i - 1
+            ViewCount = i - 1
+            PostId = i
+            Title = "how do i get error documentation hint in xcode"
+            Excerpt =
+              "I'm watching a tutorial and a question mark shows up by the purple error "
+              + "message with a link straight to the docs that answers why. I'm losing what's left "
+              + "of my sanity trying to figure out how to turn ..."
+            Tags = tags[rand.Next(tags.Length)] } ]
+    )
 
   let handleGetPostSummaries =
     fun (next: HttpFunc) (ctx: HttpContext) ->
@@ -58,3 +59,21 @@ module HttpHandlers =
           Total = Seq.length allItems }
 
       task { return! json response next ctx }
+
+  let handleCreateQuestion =
+    fun (next: HttpFunc) (ctx: HttpContext) ->
+      task {
+        let! command = ctx.BindJsonAsync<CreateQuestionCommand>()
+
+        let newQuestion =
+          { VoteCount = 0
+            AnswerCount = 0
+            ViewCount = 0
+            PostId = allItems.Count + 1
+            Title = command.Title
+            Excerpt = command.Excerpt
+            Tags = command.Tags }
+
+        allItems.Add(newQuestion)
+        return! Successful.CREATED newQuestion next ctx
+      }

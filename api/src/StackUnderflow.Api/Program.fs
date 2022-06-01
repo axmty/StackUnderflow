@@ -18,7 +18,9 @@ let webApp =
   choose [ subRoute
              "/api"
              (choose [ GET
-                       >=> choose [ route "/post-summaries" >=> handleGetPostSummaries ] ])
+                       >=> choose [ route "/post-summaries" >=> handleGetPostSummaries ]
+                       POST
+                       >=> choose [ route "/questions" >=> handleCreateQuestion ] ])
            setStatusCode 404 >=> text "Not Found" ]
 
 // ---------------------------------

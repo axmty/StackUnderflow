@@ -10,3 +10,8 @@ type PostSummaryDto =
     Title: string
     Excerpt: string
     Tags: string list }
+
+type CreateQuestionCommand =
+  { Title: string
+    Excerpt: string
+    Tags: string list }

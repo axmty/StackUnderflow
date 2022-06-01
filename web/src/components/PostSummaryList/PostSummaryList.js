@@ -42,7 +42,7 @@ const PostSummaryList = () => {
     return <div>Loading...</div>;
   } else {
     return (
-      <div className="Content">
+      <>
         <div className="PostSummaryList">
           {items.map((item) => (
             <PostSummary key={item.postId} {...item} />
@@ -57,7 +57,7 @@ const PostSummaryList = () => {
           pageSizeOptions={pageSizeOptions}
           handlePageSizeChange={setPageSize}
         />
-      </div>
+      </>
     );
   }
 };
