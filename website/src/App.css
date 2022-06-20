@@ -1,6 +1,6 @@
 .App {
   color: var(--color-dark-grey);
-  font-size: 13px;
+  font-size: var(--font-size-normal);
   --color-black: #000000;
   --color-grey: #888888;
   --color-dark-grey: #444444;
@@ -11,6 +11,8 @@
   --color-pale-spring-bud: #dceab2;
   --color-june-bud: #c7d66d;
   --color-green-ok: #3d8f58;
+  --font-size-normal: 13px;
+  --font-size-lower: 12px;
 }
 
 .Link {
@@ -20,4 +22,8 @@
 
 .Link:hover {
   color: var(--color-opal);
+}
+
+.SvgIcon {
+  fill: currentColor;
 }

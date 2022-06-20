@@ -1,7 +1,12 @@
+.PostSummaryList {
+  max-width: 800px;
+}
+
 .PostSummary {
   border-bottom: 1px solid var(--color-cambridge-blue);
   display: flex;
   padding: 16px;
+  width: auto;
 }
 
 .PostSummary:last-child {
@@ -14,14 +19,18 @@
   flex-direction: column;
   flex-shrink: 0;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 7px;
   margin-bottom: 5px;
   margin-right: 16px;
   width: 100px;
 }
 
 .PostSummary-Stats-Item {
+  align-items: center;
   color: var(--color-grey);
+  display: inline-flex;
+  gap: 2px;
+  line-height: 16px;
 }
 
 .PostSummary-Stats-Item--emphasized {
@@ -35,19 +44,39 @@
   padding: 2px 4px;
 }
 
+.PostSummary-Stats-Item--hasAcceptedAnswer {
+  background-color: var(--color-green-ok);
+  color: white;
+}
+
+.PostSummary-Content {
+  flex-grow: 1;
+}
+
 .PostSummary-Content-Title {
   margin-bottom: 5px;
-  margin-top: 0;
+  margin-top: -2px;
 }
 
 .PostSummary-Content-Excerpt {
   display: -webkit-box;
+  hyphens: auto;
   margin-bottom: 8px;
   overflow: hidden;
   overflow-wrap: break-word;
   word-break: break-word;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+
+.PostSummary-Meta {
+  align-items: center;
+  column-gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: var(--font-size-lower);
+  justify-content: space-between;
+  row-gap: 8px;
 }
 
 .PostSummary-Meta-Tags {
@@ -71,7 +100,15 @@
   color: var(--color-dark-grey);
 }
 
-@media (max-width: 980px) {
+.PostSummary-Meta-AdditionalInformation {
+  display: flex;
+}
+
+.PostSummary-Meta-AdditionalInformation-UserInfo {
+  display: flex;
+}
+
+@media (max-width: 800px) {
   .PostSummary {
     flex-direction: column;
   }

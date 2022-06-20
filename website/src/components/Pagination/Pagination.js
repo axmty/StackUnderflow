@@ -10,6 +10,8 @@ const Pagination = ({
   pageSizeOptions,
   handlePageSizeChange,
 }) => {
+  const initPageChange = () => handlePageChange(1);
+
   return (
     <div className="Pagination">
       <Pager page={page} pageCount={pageCount} handlePageChange={handlePageChange} />
@@ -17,6 +19,7 @@ const Pagination = ({
         pageSize={pageSize}
         pageSizeOptions={pageSizeOptions}
         handlePageSizeChange={handlePageSizeChange}
+        initPage={initPageChange}
       />
     </div>
   );

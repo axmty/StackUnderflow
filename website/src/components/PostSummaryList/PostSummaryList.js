@@ -13,11 +13,7 @@ const PostSummaryList = () => {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(pageSizeOptions[0]);
   const [total, setTotal] = useState(0);
-
   const pageCount = Math.ceil(total / pageSize);
-  if (pageCount > 0 && page > pageCount) {
-    setPage(pageCount);
-  }
 
   useEffect(() => {
     fetch(`https://localhost:5001/api/post-summaries?page=${page}&page_size=${pageSize}`)
